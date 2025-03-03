@@ -1,34 +1,34 @@
-Translator Project
+📖 Translator Project
 
-Overview
+📝 Overview
 
 This project provides an English-to-French translation pipeline using the Hugging Face transformers library. It runs in a Jupyter Notebook (Translator.ipynb) and processes .srt subtitle files to translate English captions into French.
 
-Features
+✨ Features
 
-Translates English text to French using the google-t5/t5-base model.
+🚀 Translates English text to French using the google-t5/t5-base model.
 
-Supports subtitle translation from .srt files.
+📜 Supports subtitle translation from .srt files.
 
-Containerized with Docker and Jupyter Notebook for easy deployment.
+📦 Containerized with Docker and Jupyter Notebook for easy deployment.
 
-Prerequisites
+🔧 Prerequisites
 
 Ensure you have the following installed:
 
-Docker (if running in a containerized environment)
+🐳 Docker (if running in a containerized environment)
 
-Python 3.x
+🐍 Python 3.x
 
-Required Python packages:
+📦 Required Python packages:
 
 transformers
 
 pysrt
 
-Installation
+⚙️ Installation
 
-Running with Docker
+🚀 Running with Docker
 
 Build the Docker container:
 
@@ -38,7 +38,7 @@ Access the Jupyter Notebook by opening your browser and navigating to:
 
 http://localhost:8000/?token=iambatman
 
-Running Locally (Without Docker)
+🖥️ Running Locally (Without Docker)
 
 Install dependencies:
 
@@ -50,16 +50,16 @@ jupyter notebook
 
 Run Translator.ipynb to translate text or subtitle files.
 
-Usage
+🚀 Usage
 
-Translate a Sentence
+🔡 Translate a Sentence
 
 from transformers import pipeline
 translator = pipeline("translation_en_to_fr")
 result = translator("my name is Jaydon and I am a programmer")
 print(result[0]['translation_text'])  # Output: "je m'appelle Jaydon et je suis programmeur."
 
-Translate Subtitle File (.srt)
+📜 Translate Subtitle File (.srt)
 
 import pysrt
 subs = pysrt.open("captions_english.srt")
@@ -70,17 +70,17 @@ for i in subs:
 
 subs.save("captions_french.srt")
 
-Project Structure
+📂 Project Structure
 
 .
-├── Translator.ipynb       # Jupyter Notebook for translation
-├── captions_english.srt   # Example subtitle file (input)
-├── captions_french.srt    # Translated subtitle file (output)
-├── Dockerfile             # Docker setup
-├── compose.yml            # Docker Compose configuration
-└── README.md              # Project documentation
+├── 📒 Translator.ipynb       # Jupyter Notebook for translation
+├── 📝 captions_english.srt   # Example subtitle file (input)
+├── 📜 captions_french.srt    # Translated subtitle file (output)
+├── 🐳 Dockerfile             # Docker setup
+├── ⚙️ compose.yml            # Docker Compose configuration
+└── 📖 README.md              # Project documentation
 
-Notes
+⚠️ Notes
 
 The project defaults to using google-t5/t5-base. If deploying in production, explicitly specify the model and revision to avoid version mismatches.
 
