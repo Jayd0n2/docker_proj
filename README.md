@@ -1,32 +1,32 @@
 <h1>📖 Translator Project</h1>
 
-📝 Overview
+<h2>📝 Overview</h2>
 
 This project provides an English-to-French translation pipeline using the Hugging Face transformers library. It runs in a Jupyter Notebook (Translator.ipynb) and processes .srt subtitle files to translate English captions into French.
 
-✨ Features
+<h2>✨ Features</h2>
 
-🚀 Translates English text to French using the google-t5/t5-base model.
+- 🚀 Translates English text to French using the google-t5/t5-base model.
 
-📜 Supports subtitle translation from .srt files.
+-📜 Supports subtitle translation from .srt files.
 
-📦 Containerized with Docker and Jupyter Notebook for easy deployment.
+-📦 Containerized with Docker and Jupyter Notebook for easy deployment.
 
-🔧 Prerequisites
+<h2>🔧 Prerequisites</h2>
 
 Ensure you have the following installed:
 
-🐳 Docker (if running in a containerized environment)
+- 🐳 Docker (if running in a containerized environment)
 
-🐍 Python 3.x
+- 🐍 Python 3.x
 
-📦 Required Python packages:
+<h2>📦 Required Python packages: </h2>
 
 transformers
 
 pysrt
 
-⚙️ Installation
+<h2>⚙️ Installation</h2>
 
 🚀 Running with Docker
 
@@ -59,7 +59,7 @@ translator = pipeline("translation_en_to_fr")
 result = translator("my name is Jaydon and I am a programmer")
 print(result[0]['translation_text'])  # Output: "je m'appelle Jaydon et je suis programmeur."
 
-📜 Translate Subtitle File (.srt)
+<h2>📜 Translate Subtitle File (.srt)</h2>
 
 import pysrt
 subs = pysrt.open("captions_english.srt")
@@ -70,7 +70,7 @@ for i in subs:
 
 subs.save("captions_french.srt")
 
-📂 Project Structure
+<h2>📂 Project Structure</h2>
 
 .
 ├── 📒 Translator.ipynb       # Jupyter Notebook for translation
@@ -80,7 +80,7 @@ subs.save("captions_french.srt")
 ├── ⚙️ compose.yml            # Docker Compose configuration
 └── 📖 README.md              # Project documentation
 
-⚠️ Notes
+<h2>⚠️ Notes</h2>
 
 The project defaults to using google-t5/t5-base. If deploying in production, explicitly specify the model and revision to avoid version mismatches.
 
