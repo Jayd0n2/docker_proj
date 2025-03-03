@@ -1,60 +1,87 @@
-English to French Subtitle Translator
+Translator Project
 
-This project demonstrates how to use the Hugging Face transformers library to translate English text into French. It includes a script that translates subtitles from an English .srt file into French.
+Overview
+
+This project provides an English-to-French translation pipeline using the Hugging Face transformers library. It runs in a Jupyter Notebook (Translator.ipynb) and processes .srt subtitle files to translate English captions into French.
 
 Features
 
-Uses the transformers library with the pipeline function for translation.
+Translates English text to French using the google-t5/t5-base model.
 
-Translates English text into French using the default google-t5/t5-base model.
+Supports subtitle translation from .srt files.
 
-Reads English subtitles from an .srt file, translates them, and saves the translated content into a new .srt file.
+Containerized with Docker and Jupyter Notebook for easy deployment.
 
-Requirements
+Prerequisites
 
-Make sure you have the following dependencies installed:
+Ensure you have the following installed:
 
-pip install transformers pysrt torch tensorflow
+Docker (if running in a containerized environment)
+
+Python 3.x
+
+Required Python packages:
+
+transformers
+
+pysrt
+
+Installation
+
+Running with Docker
+
+Build the Docker container:
+
+docker-compose up --build
+
+Access the Jupyter Notebook by opening your browser and navigating to:
+
+http://localhost:8000/?token=iambatman
+
+Running Locally (Without Docker)
+
+Install dependencies:
+
+pip install transformers pysrt
+
+Open Jupyter Notebook:
+
+jupyter notebook
+
+Run Translator.ipynb to translate text or subtitle files.
 
 Usage
 
-Basic Translation
-
-To perform a simple translation of a sentence:
+Translate a Sentence
 
 from transformers import pipeline
-
 translator = pipeline("translation_en_to_fr")
-fr = translator("my name is Jaydon and I am a programmer")
-print(fr[0]['translation_text'])  # Output: "je m'appelle Jaydon et je suis programmeur."
+result = translator("my name is Jaydon and I am a programmer")
+print(result[0]['translation_text'])  # Output: "je m'appelle Jaydon et je suis programmeur."
 
-Translating Subtitle Files
-
-To translate an English .srt subtitle file into French:
+Translate Subtitle File (.srt)
 
 import pysrt
-from transformers import pipeline
-
-# Load translation model
-translator = pipeline("translation_en_to_fr")
-
-# Open subtitle file
 subs = pysrt.open("captions_english.srt")
 
-# Translate each subtitle line
 for i in subs:
     fr_text = translator(i.text)[0]['translation_text']
     i.text = fr_text
 
-# Save the translated subtitles
 subs.save("captions_french.srt")
+
+Project Structure
+
+.
+├── Translator.ipynb       # Jupyter Notebook for translation
+├── captions_english.srt   # Example subtitle file (input)
+├── captions_french.srt    # Translated subtitle file (output)
+├── Dockerfile             # Docker setup
+├── compose.yml            # Docker Compose configuration
+└── README.md              # Project documentation
 
 Notes
 
-The script uses the google-t5/t5-base model by default. You can specify another model explicitly if needed.
+The project defaults to using google-t5/t5-base. If deploying in production, explicitly specify the model and revision to avoid version mismatches.
 
-Running the script for large subtitle files may take some time depending on your system’s performance.
-
-Using a preloaded model for translation in production is recommended to avoid repeated downloads.
-
-
+Ensure captions_english.srt is available before running the script.
