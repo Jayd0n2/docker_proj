@@ -1,4 +1,4 @@
-📖 Translator Project
+<h1>📖 Translator Project</h1>
 
 📝 Overview
 
