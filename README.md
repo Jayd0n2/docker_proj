@@ -52,23 +52,6 @@ Run Translator.ipynb to translate text or subtitle files.
 
 🚀 Usage
 
-🔡 Translate a Sentence
-
-from transformers import pipeline
-translator = pipeline("translation_en_to_fr")
-result = translator("my name is Jaydon and I am a programmer")
-print(result[0]['translation_text'])  # Output: "je m'appelle Jaydon et je suis programmeur."
-
-<h2>📜 Translate Subtitle File (.srt)</h2>
-
-import pysrt
-subs = pysrt.open("captions_english.srt")
-
-for i in subs:
-    fr_text = translator(i.text)[0]['translation_text']
-    i.text = fr_text
-
-subs.save("captions_french.srt")
 
 <h2>📂 Project Structure</h2>
 
